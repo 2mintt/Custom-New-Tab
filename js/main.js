@@ -26,7 +26,7 @@ setInterval(() => {
 function bgColor(){
     var h = today.getHours();
     var bg = document.getElementById('bg').style;
-    var sun = document.getElementsByClassName('sun').style;
+    var sun = document.querySelector("#bg > div.sun").style;
     if (h == 0 && h < 5){
         bg.backgroundColor = '#555';
     }
