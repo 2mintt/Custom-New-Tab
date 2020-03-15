@@ -1,37 +1,58 @@
+
 var today = new Date();
-var day = today.getDay();
-var date = today.getDate()+ '/' + (today.getMonth()+1);
-var h = today.getHours();
-if (h < 10) {
-    h = '0'+ h;
-}
-var m = today.getMinutes();;
-if (m < 10){
-    m = '0'+m;
-}
-var time = h + ':' + m;
+setInterval(() => {
+    var today = new Date();
+    var date = today.getDate();
+    var mon = today.getMonth()+1;
+    var h = today.getHours();
+    var m = today.getMinutes();
+    if (mon < 10){
+        var mon = '0' + mon;
+    };
+    if (date < 10){
+        var date = '0' + date;
+    };
+    if (h < 10){
+        h = '0' + h;
+    };
+    if (m < 10){
+        m = '0' + m;
+    }
+    document.getElementById('date').innerHTML = date + '/' + mon;
+    document.getElementById('time').innerHTML = h + ':' + m;
+    
+}, 1000);
+
 function bgColor(){
+    var h = today.getHours();
     var bg = document.getElementById('bg').style;
+    var sun = document.getElementsByClassName('sun').style;
     if (h == 0 && h < 5){
         bg.backgroundColor = '#555';
     }
     else if( h > 5 && h <= 7 ){
         bg.backgroundColor = '#efa18b';
+        sun.transform = 'rotate(-150deg) translate(40vw) rotate(-150deg)';
     }
     else if( h <= 10 ){
         bg.backgroundColor = '#e3c498';
+        sun.transform = 'rotate(-120deg) translate(40vw) rotate(-120deg)';
     }
     else if( h <= 14 ){
         bg.backgroundColor = '#f6e9d2';
+        sun.transform = 'rotate(-90deg) translate(40vw) rotate(-90deg)';
     }
     else if( h <= 16 ){
         bg.backgroundColor = '#e3c498';
+        sun.transform = 'rotate(-60deg) translate(40vw) rotate(-60deg)';
     }
     else if (h <=17){
         bg.backgroundColor = '#efa18b';
+        sun.transform = 'rotate(-30deg) translate(40vw) rotate(-30deg)';
     }
     else if (h >= 18){
         bg.backgroundColor = '#010a3d';
+        sun.transform = 'rotate(-90deg) translate(40vw) rotate(-90deg)';
     }
 }
 bgColor();
@@ -53,6 +74,11 @@ function getAPI(){
         document.getElementById('feel').innerHTML = feel + '°C';
         if (weatherId == 500){
             document.getElementById('weather-icon').innerHTML = '<img id=icon src=./svg/small_rain.svg>';
+            document.getElementsByClassName('rain-drop').style.display = 'block';
+        }
+        else if (weatherId == 202){
+            document.getElementById('weather-icon').innerHTML = '<img id=icon src = ./svg/strong_rain.svg>';
+            document.getElementsByClassName('lightning').style.display = 'block';
         }
         else if (weatherId == 501){
             document.getElementById('weather-icon').innerHTML = '<img id=icon src = ./svg/strong_rain.svg>';
@@ -68,9 +94,3 @@ function getAPI(){
 
 }
 getAPI();
-
-function getChange(){
-    document.getElementById('date').innerHTML = date;
-    document.getElementById('time').innerHTML = time;
-}
-getChange();

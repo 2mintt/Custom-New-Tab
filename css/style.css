@@ -226,3 +226,67 @@ html, body{
         top: 100vh;
     }
 }
+.fog {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(55px);
+    opacity: 0.4;
+    background-color: white;
+    display: none;
+    animation: fogMoving 8s linear infinite;
+}
+.fog {
+    width: 95vw;
+    height: 10vw;
+    bottom: 12vw;
+    left: 5vw;
+}
+@keyframes fogMoving {
+    0%, 100% {
+        transform: translateX(-10%);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateX(10%);
+        opacity: 0.3;
+    }
+}
+.lightning {
+    display: none;
+    position: absolute;
+    /*   right: -50%; */
+    background: transparent;
+    animation: lightning 4s linear infinite;
+}
+.lightning img {
+    width: 100%;
+    transform: scaleX(-1) rotate(45deg);
+}
+@keyframes lightning {
+    0%, 100% {
+        opacity: 0;
+        background-color: transparent;
+    }
+    30% {
+        opacity: 0;
+        background-color: transparent;
+    }
+    31% {
+        opacity: 1;
+        background-color: white;
+    }
+    37% {
+        opacity: 0;
+        background-color: transparent;
+    }
+}
+.sun {
+    width: 10vw;
+    height: calc(10vw);
+    background-color: #fde477;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 80%;
+    transform: rotate(-120deg) translate(40vw) rotate(-120deg);
+}
