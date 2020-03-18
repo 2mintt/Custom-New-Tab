@@ -32,27 +32,27 @@ function bgColor(){
     }
     else if( h > 5 && h <= 7 ){
         bg.backgroundColor = '#efa18b';
-        sun.transform = 'rotate(-150deg) translate(40vw) rotate(-150deg)';
+        sun.transform = 'rotate(-150deg) translate(30px) rotate(-150deg)';
     }
     else if( h <= 10 ){
         bg.backgroundColor = '#e3c498';
-        sun.transform = 'rotate(-120deg) translate(40vw) rotate(-120deg)';
+        sun.transform = 'rotate(-120deg) translate(30px) rotate(-120deg)';
     }
     else if( h <= 14 ){
         bg.backgroundColor = '#f6e9d2';
-        sun.transform = 'rotate(-90deg) translate(40vw) rotate(-90deg)';
+        sun.transform = 'rotate(-90deg) translate(30px) rotate(-90deg)';
     }
     else if( h <= 16 ){
         bg.backgroundColor = '#e3c498';
-        sun.transform = 'rotate(-60deg) translate(40vw) rotate(-60deg)';
+        sun.transform = 'rotate(-60deg) translate(30px) rotate(-60deg)';
     }
     else if (h <=17){
         bg.backgroundColor = '#efa18b';
-        sun.transform = 'rotate(-30deg) translate(40vw) rotate(-30deg)';
+        sun.transform = 'rotate(-30deg) translate(30px) rotate(-30deg)';
     }
     else if (h >= 18){
         bg.backgroundColor = '#010a3d';
-        sun.transform = 'rotate(-90deg) translate(40vw) rotate(-90deg)';
+        sun.transform = 'rotate(-90deg) translate(30px) rotate(-90deg)';
     }
 }
 bgColor();
@@ -72,11 +72,25 @@ function getAPI(){
         document.getElementById('temp').innerHTML = temp + '°C';
         document.getElementById('type').innerHTML = type;
         document.getElementById('feel').innerHTML = feel + '°C';
+        var dizzle = [300, 301, 302, 310, 311, 312, 313, 313, 314, 321];
+        var storm = [200, 201, 202, 210, 211, 212, 221, 230, 231, 232];
+        var rain = [500, 501, 502, 503, 504, 511, 520, 521, 533, 531];
+        var cloud = [801, 803, 802, 804];
         if (weatherId == 500){
             document.getElementById('weather-icon').innerHTML = '<img id=icon src=./svg/small_rain.svg>';
-            document.getElementsByClassName('rain-drop').style.display = 'block';
+            var elems = document.getElementsByClassName('rain-drop');
+            for (var i=0;i<elems.length;i+=1){
+                elems[i].style.display = 'block';
+            }
         }
-        else if (weatherId == 202){
+        else if (weatherId = dizzle){
+            document.getElementById('weather-icon').innerHTML = '<img id=icon src=./svg/small_rain.svg>';
+            var elems = document.getElementsByClassName('rain-drop');
+            for (var i=0;i<elems.length;i+=1){
+                elems[i].style.display = 'block';
+            }
+        }
+        else if (weatherId = storm){
             document.getElementById('weather-icon').innerHTML = '<img id=icon src = ./svg/strong_rain.svg>';
             document.getElementsByClassName('lightning').style.display = 'block';
         }
@@ -86,7 +100,7 @@ function getAPI(){
         else if (weatherId == 701){
             document.getElementById('weather-icon').innerHTML = '<img id=icon src = ./svg/foggy.svg>';
         }
-        else if (weatherId == 804){
+        else if (weatherId = cloud){
             document.getElementById('weather-icon').innerHTML = '<img id=icon src = ./svg/cloudy.svg>';
         }
     })

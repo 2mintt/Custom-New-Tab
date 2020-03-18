@@ -281,12 +281,12 @@ html, body{
     }
 }
 .sun {
-    width: 10vw;
-    height: calc(10vw);
+    width: 100px;
+    height: calc(100px);
     background-color: #fde477;
     border-radius: 50%;
     position: absolute;
-    bottom: 0;
-    left: 80%;
-    transform: rotate(-120deg) translate(40vw) rotate(-120deg);
+    top: 140px;
+    right: 35%;
+    transform: rotate(-120deg) translate(30px) rotate(-120deg);
 }
